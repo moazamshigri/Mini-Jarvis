@@ -5,6 +5,14 @@ import pyttsx3
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
+def print_intro():
+    print("\t","="*50)
+    print("\tWelcome to Jarvis - Your Personal Python Assistant      ")
+    print("\t---------------------------------------------------      ")
+    print("                        Author: Moazam                         ")
+    print("                         Version: 1.0                          ")
+    print("\tA voice-controlled assistant that can open websites & more!")
+    print("\t","="*50)
 
 def speak(text):
     print("Jarvis:", text)
@@ -50,6 +58,7 @@ def handle_command(command):
 
 if __name__ == "__main__":
     speak("Initializing Jarvis...")
+    print_intro()
 
     jarvis_active = False
 
@@ -64,7 +73,8 @@ if __name__ == "__main__":
                 print(f"You said: {query}")
 
                 if not jarvis_active:
-                    if "jarvis" in query:
+                    if "jarvis" in query or "hey jarvis" in query or "wakeup jarvis" in query:
+                        print("👂 Jarvis activated")
                         speak("Yes, I’m here.")
                         jarvis_active = True
                 else:
